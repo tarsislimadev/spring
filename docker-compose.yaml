@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  app:
+    hostname: app
+    build: './src/app'
+    volumes:
+      - './src/app:/app'
+    ports:
+      - '8080:8080'
+
+  docker-push:
+    image: 'tmvdl/projects:spring'
+    build: './src/app'
+
+  github-release:
+    image: 'github-release'
+    build: './src'
